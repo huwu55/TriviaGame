@@ -22,3 +22,42 @@ h1 {
     text-align: center;
 }
 
+#qAndA {
+    border: solid;
+    border-width: 2px;
+}
+
+.timeRemaining, .selection{
+    margin: 2px;
+    padding: 3px;
+}
+
+.timeRemaining {
+    border:solid;
+    border-width: 2px;
+    border-color: red;
+}
+
+#question {
+    border:solid;
+    border-width: 2px;
+    border-color: blue;
+}
+
+.selection {
+    border:solid;
+    border-width: 2px;
+    border-color: green;
+}
+
+.right {
+    background-color: green;
+    width: 300px;
+    height: 300px;
+}
+
+.wrong {
+    background-color: red;
+    width: 300px;
+    height: 300px;
+}
