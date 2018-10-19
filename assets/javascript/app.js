@@ -8,6 +8,12 @@ $(document).ready(function(){
     //timeLeft = 5;
     start = false;
 
+    function reset(){
+        wins = 0;
+        loses = 0;
+        i = 0;
+    }
+
     function countdown(){
         if(timeLeft==0){
             clearTimeout(timerID);
