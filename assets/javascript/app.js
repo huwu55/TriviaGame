@@ -67,6 +67,12 @@ $(document).ready(function(){
         checki();
     }
 
+    // remove the time's up screen after countdown and update i
+    function timesUp(){
+        $(".timesUp").remove();
+        checki();
+    }
+
     //interrupt timer, check the player's answer
     //start display a page and timer depends on the right or wrong answer
     function checkAnswer(str){
@@ -77,6 +83,12 @@ $(document).ready(function(){
             $(".main").append("<div class='right col-md-8'></div>");
             $(".right").html("You Win!");
             wins++;
+        }
+        else if(str === ""){
+            setTimeout(timesUp, 2000);
+            $(".main").append("<div class='timesUp col-md-8'></div>");
+            $(".timesUp").html("Time's up!<br>The correct answer is: " + questions[i].correctAns);
+            loses++;
         }
         else{
             setTimeout(wrongAnswer, 2000);

@@ -28,7 +28,7 @@ h1 {
     border-width: 2px;
 }
 
-.start, .right, .wrong, .reset {
+.start, .right, .wrong, .timesUp, .reset {
     background-color: aliceblue;
     height: 300px;
     position: absolute;
