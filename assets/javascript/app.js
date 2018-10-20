@@ -49,7 +49,7 @@ $(document).ready(function(){
         else{
             $(".main").append("<div class='reset col-md-8'></div>");
             $(".reset").html("Wins: " + wins + "<br>Loses: " + loses + "<br>");
-            $(".reset").append("<button id='reset'>Restart!</button>");
+            $(".reset").append("<button class='btn btn-outline-dark btn-lg' id='reset'>Restart!</button>");
             $("#reset").click(reset);
         }
     }
@@ -81,7 +81,7 @@ $(document).ready(function(){
         if (str === questions[i].correctAns){
             setTimeout(correctAnswer, 2000);
             $(".main").append("<div class='right col-md-8'></div>");
-            $(".right").html("You Win!");
+            $(".right").html("That is correct!");
             wins++;
         }
         else if(str === ""){
@@ -98,7 +98,7 @@ $(document).ready(function(){
         }
     }
 
-    $(".main").append("<div class='start col-md-8'><button type='button' id='start'>Start!</button></div>");
+    $(".main").append("<div class='start col-md-8'><button class='btn btn-outline-dark btn-lg' id='start'>Start!</button></div>");
 
     // start the game
     $("#start").click(function(){

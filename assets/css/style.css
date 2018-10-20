@@ -2,13 +2,14 @@ body{
     background-image: url("../images/background.jpg");
     background-size: cover; /* Resize the background image to cover the entire container */
     margin: 0px;
+    font-family: 'Kodchasan', sans-serif;
 }
 
 section {
     margin-top: 50px;
     padding: 40px;
     background-color: aliceblue;
-    height: 400px;
+    height: 420px;
 }
 
 h1 {
@@ -18,14 +19,20 @@ h1 {
     margin-bottom: 20px;
 }
 
+#hp{
+    font-family: 'Homemade Apple', cursive;
+}
+
 .main {
     margin: auto;
     text-align: center;
 }
 
 #qAndA {
-    border: solid;
+    padding:5px;
+    border-style: double;
     border-width: 2px;
+    border-radius: 25px;
 }
 
 .start, .right, .wrong, .timesUp, .reset {
@@ -35,33 +42,25 @@ h1 {
     z-index: 50;
 }
 
+.start{
+    padding-top: 50px;
+}
+
+#reset{
+    margin: 5px;
+}
+
 .timeRemaining, .selection{
     margin: 2px;
     padding: 3px;
 }
 
-.timeRemaining {
-    border:solid;
-    border-width: 2px;
-    border-color: red;
-}
-
 #question {
-    border:solid;
-    border-width: 2px;
-    border-color: blue;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px;
 }
 
 .selection {
-    border:solid;
-    border-width: 2px;
-    border-color: green;
-}
-
-.right {
-    
-}
-
-.wrong {
-    
+    width: 90%;
 }
