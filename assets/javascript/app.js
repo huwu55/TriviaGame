@@ -1,44 +1,43 @@
 $(document).ready(function(){
 
     console.log(questions.length);
-    var wins, loses, timeLeft, timerID, start;
+    var wins, loses, timeLeft, timerID;
     var i=0;
     wins = 0;
     loses = 0;
-    //timeLeft = 5;
-    start = false;
+    timeLeft = 10;
 
     //reset game after the round
     function reset(){
         wins = 0;
         loses = 0;
         i = 0;
+        $(".reset").remove();
+        displayQuestionAndSelections();
     }
 
     //countdown time when player answers questions
     function countdown(){
         if(timeLeft==0){
             clearTimeout(timerID);
-            //$(".main").html("");
             checkAnswer("");
         }
         else{
-            $("#timeRemaining").html(timeLeft + "seconds");
             timeLeft--;
+            $("#timeRemaining").html(timeLeft + " seconds");
         }
     }
 
     //display current question and its selections
     function displayQuestionAndSelections(){
         timeLeft = 10;
-        //start = true;
-        console.log(i);
+        timerID = setInterval(countdown, 1000);
+        //console.log(i);
         $("#question").html(questions[i].q);
         $("#a1").html(questions[i].a1);
         $("#a2").html(questions[i].a2);
         $("#a3").html(questions[i].a3);
         $("#a4").html(questions[i].a4);
-        timerID = setInterval(countdown, 1000);
     }
 
     //track current index of questions and display the next question
@@ -47,21 +46,23 @@ $(document).ready(function(){
             i++;
             displayQuestionAndSelections();
         }
-        else console.log("end");
+        else{
+            $(".main").append("<div class='reset col-md-8'></div>");
+            $(".reset").html("Wins: " + wins + "<br>Loses: " + loses + "<br>");
+            $(".reset").append("<button id='reset'>Restart!</button>");
+            $("#reset").click(reset);
+        }
     }
 
     //remove the correctAnswer screen after countdown and update i
     function correctAnswer(){
         console.log("right");
-        //$("#qAndA").append("<div class='right'></div>");
         $(".right").remove();
         checki();
     }
    
     // remove the wrongAnswer screen after countdown and update i
     function wrongAnswer(){
-        console.log("false");
-        //$("#qAndA").append("<div class='wrong'></div>");
         $(".wrong").remove();
         checki();
     }
@@ -69,45 +70,40 @@ $(document).ready(function(){
     //interrupt timer, check the player's answer
     //start display a page and timer depends on the right or wrong answer
     function checkAnswer(str){
-        //console.log("hello world");
         clearTimeout(timerID);
-        //start = false;
+        $("#timeRemaining").html("");
         if (str === questions[i].correctAns){
-            $("#qAndA").append("<div class='right'></div>");
-            setTimeout(correctAnswer, 3000);
+            setTimeout(correctAnswer, 2000);
+            $(".main").append("<div class='right col-md-8'></div>");
+            $(".right").html("You Win!");
+            wins++;
         }
         else{
-            $("#qAndA").append("<div class='wrong'></div>");
-            setTimeout(wrongAnswer, 3000);
+            setTimeout(wrongAnswer, 2000);
+            $(".main").append("<div class='wrong col-md-8'></div>");
+            $(".wrong").html("Wrong answer!<br>The correct answer is: " + questions[i].correctAns);
+            loses++;
         }
     }
 
+    $(".main").append("<div class='start col-md-8'><button type='button' id='start'>Start!</button></div>");
+
     // start the game
     $("#start").click(function(){
-        $(this).remove();
-        if(!start){
-            console.log("start");
-            //start = true;
-            displayQuestionAndSelections();
-        }
-
+        $(".start").remove();
+        displayQuestionAndSelections();
     });
     
     $("#a1").click(function(){
-        //if(start) 
         checkAnswer(questions[i].a1);
     });
     $("#a2").click(function(){
-        //if(start) 
         checkAnswer(questions[i].a2);
     });
     $("#a3").click(function(){
-        //if(start)
         checkAnswer(questions[i].a3);
     });
     $("#a4").click(function(){
-        //if(start) 
         checkAnswer(questions[i].a4);
     });
-
 });
